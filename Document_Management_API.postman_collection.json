@@ -1,0 +1,318 @@
+{
+  "info": {
+    "name": "Document Management API",
+    "description": "FastAPI Document Management Service - Postman Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health & Info",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            },
+            "description": "Check if the service is healthy"
+          }
+        },
+        {
+          "name": "Service Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Get service information and available endpoints"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Document Upload",
+      "item": [
+        {
+          "name": "Upload Single Document",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "type": "file",
+                  "src": "/path/to/your/document.pdf"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/upload",
+              "host": ["{{base_url}}"],
+              "path": ["upload"]
+            },
+            "description": "Upload a single document"
+          }
+        },
+        {
+          "name": "Upload Multiple Documents",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "type": "file",
+                  "src": ["/path/to/document1.pdf", "/path/to/document2.txt"]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/upload",
+              "host": ["{{base_url}}"],
+              "path": ["upload"]
+            },
+            "description": "Upload multiple documents at once"
+          }
+        },
+        {
+          "name": "Upload to Custom Folder",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "type": "file",
+                  "src": "/path/to/document.pdf"
+                },
+                {
+                  "key": "folder",
+                  "value": "C:/custom/path",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/upload",
+              "host": ["{{base_url}}"],
+              "path": ["upload"]
+            },
+            "description": "Upload documents to a specific folder"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Indexing",
+      "item": [
+        {
+          "name": "Create Index - Default Folder",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"index_name\": \"my_documents\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/index",
+              "host": ["{{base_url}}"],
+              "path": ["index"]
+            },
+            "description": "Create an index using default DATA_FOLDER"
+          }
+        },
+        {
+          "name": "Create Index - Custom Folder",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"index_name\": \"my_documents\",\n  \"data_folder\": \"C:/temp/data\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/index",
+              "host": ["{{base_url}}"],
+              "path": ["index"]
+            },
+            "description": "Create an index with a custom data folder"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "Basic Search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"machine learning\",\n  \"index_name\": \"my_documents\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/search",
+              "host": ["{{base_url}}"],
+              "path": ["search"]
+            },
+            "description": "Search with default settings (top_k=5)"
+          }
+        },
+        {
+          "name": "Search - Custom Top K",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"artificial intelligence\",\n  \"index_name\": \"my_documents\",\n  \"top_k\": 10\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/search",
+              "host": ["{{base_url}}"],
+              "path": ["search"]
+            },
+            "description": "Search with custom number of results"
+          }
+        },
+        {
+          "name": "Search - Default Index",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"deep learning\",\n  \"top_k\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/search",
+              "host": ["{{base_url}}"],
+              "path": ["search"]
+            },
+            "description": "Search using default index"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Q&A",
+      "item": [
+        {
+          "name": "Ask Question",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"What is machine learning?\",\n  \"index_name\": \"my_documents\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ask",
+              "host": ["{{base_url}}"],
+              "path": ["ask"]
+            },
+            "description": "Ask a question about indexed documents"
+          }
+        },
+        {
+          "name": "Ask Question - Default Index",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"How is artificial intelligence used in healthcare?\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ask",
+              "host": ["{{base_url}}"],
+              "path": ["ask"]
+            },
+            "description": "Ask a question using default index"
+          }
+        },
+        {
+          "name": "Ask Complex Question",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Summarize the key findings and recommendations from the document\",\n  \"index_name\": \"my_documents\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ask",
+              "host": ["{{base_url}}"],
+              "path": ["ask"]
+            },
+            "description": "Ask a complex question requiring analysis"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}
+

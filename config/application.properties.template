@@ -1,0 +1,151 @@
+# Application Configuration Template
+# Copy this file to config/application.properties and fill in your values
+
+# ============================================================
+# API KEYS & CREDENTIALS
+# ============================================================
+
+# OpenAI API Key (required for embeddings and Q&A)
+OPENAI_API_KEY=sk-proj-your_key_here
+
+# Hugging Face Token (optional, for alternative models)
+HF_TOKEN=hf_your_token_here
+
+# Anthropic API Key (optional, for Claude models)
+ANTHROPIC_API_KEY=
+
+# Google Gemini API Keys (optional, for Gemini models)
+GEMINI_API_KEY1=
+GEMINI_API_KEY2=
+
+# ============================================================
+# DATA CONFIGURATION
+# ============================================================
+
+# Path to document storage folder
+# Windows: C:/temp/data or C:\\temp\\data
+# Linux/Mac: /tmp/data or ./data
+DATA_FOLDER=C:/temp/data
+
+# ============================================================
+# SERVER CONFIGURATION
+# ============================================================
+
+# Server host (0.0.0.0 = accessible from all interfaces)
+SERVER_HOST=0.0.0.0
+
+# Server port
+SERVER_PORT=8000
+
+# Environment: development, staging, production
+ENVIRONMENT=development
+
+# ============================================================
+# LOGGING CONFIGURATION
+# ============================================================
+
+# Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+LOG_LEVEL=INFO
+
+# Log file path (optional)
+LOG_FILE=./logs/app.log
+
+# ============================================================
+# INDEXING CONFIGURATION
+# ============================================================
+
+# Index storage path
+INDEX_STORAGE_PATH=./indexes
+
+# Embedding model
+# Options: text-embedding-ada-002, text-embedding-3-small, text-embedding-3-large
+EMBEDDING_MODEL=text-embedding-ada-002
+
+# Maximum documents per index
+MAX_DOCS_PER_INDEX=10000
+
+# ============================================================
+# SEARCH CONFIGURATION
+# ============================================================
+
+# Default number of search results
+SEARCH_TOP_K=5
+
+# Similarity threshold (0.0 to 1.0)
+SIMILARITY_THRESHOLD=0.5
+
+# ============================================================
+# Q&A CONFIGURATION
+# ============================================================
+
+# LLM Model for Q&A
+# Options: gpt-4, gpt-3.5-turbo
+QA_MODEL=gpt-3.5-turbo
+
+# Temperature (0.0 to 2.0) - Lower = more deterministic
+QA_TEMPERATURE=0.7
+
+# Maximum tokens in response
+QA_MAX_TOKENS=2048
+
+# ============================================================
+# DOCUMENT PROCESSING
+# ============================================================
+
+# Supported file formats (comma-separated)
+SUPPORTED_FORMATS=pdf,txt,docx,md,html,json
+
+# Maximum file size in MB
+MAX_FILE_SIZE=50
+
+# Chunk size for document processing
+CHUNK_SIZE=1024
+
+# Chunk overlap
+CHUNK_OVERLAP=20
+
+# ============================================================
+# PERFORMANCE & LIMITS
+# ============================================================
+
+# Request timeout in seconds
+REQUEST_TIMEOUT=60
+
+# Maximum concurrent requests
+MAX_CONCURRENT_REQUESTS=10
+
+# Enable caching
+ENABLE_CACHE=true
+
+# Cache TTL in seconds
+CACHE_TTL=3600
+
+# ============================================================
+# CORS CONFIGURATION
+# ============================================================
+
+# Allowed origins (comma-separated)
+CORS_ORIGINS=http://localhost:3000,http://localhost:8000
+
+# Allowed methods (comma-separated)
+CORS_METHODS=GET,POST,PUT,DELETE
+
+# Allow credentials
+CORS_ALLOW_CREDENTIALS=true
+
+# ============================================================
+# DEBUG & DEVELOPMENT
+# ============================================================
+
+# Enable debug mode
+DEBUG=false
+
+# Enable CORS
+ENABLE_CORS=true
+
+# Reload on code changes (development only)
+RELOAD=false
+
+# Pretty print JSON responses
+PRETTY_JSON=true
+
